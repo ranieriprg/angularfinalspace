@@ -11,38 +11,75 @@
   }
   
   .card {
-    width: 100%;
+    width: 400px;
     height: 0;
-    padding-bottom: 100%; /* Mantendo a proporção 1:1 (altura igual à largura) */
-    background-color: #e0e0e0; /* Adicionando uma cor de fundo à box */
-    overflow: hidden; /* Para cortar a imagem caso ela ultrapasse a box */
-    position: relative; /* Para permitir que a imagem seja posicionada corretamente */
+    padding-bottom: 100%;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Exemplo: adicionando uma sombra suave */
+    border-radius: 8px; /* Exemplo: aplicando bordas arredondadas de 8px */
+    transition: all 0.3s ease; /* Exemplo: adicionando uma transição suave */
   }
   
   .card-avatar {
-    position: absolute;
+    position: inherit;
+    margin-top: 2rem;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex; /* Adicionando display flex */
+    justify-content: center; /* Centralizando horizontalmente */
+    align-items: center; /* Centralizando verticalmente */
   }
   
   .card-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Para ajustar a imagem à box mantendo a proporção */
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    position: relative; /* Adicionando posição relativa para permitir o uso do pseudo-elemento ::after */
+    transition: transform 0.2s ease-in-out; /* Adicionando uma transição suave para o efeito de escala */
   }
+  
+  .card-avatar img::after {
+    content: ''; /* Adicionando o conteúdo do pseudo-elemento */
+    position: absolute; /* Definindo a posição como absoluta em relação ao elemento pai (.card-avatar img) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../../assets/img/fs.jpg'); /* Adicionando a imagem do rover como background do pseudo-elemento */
+    background-size: contain; /* Ajustando o tamanho da imagem do rover para caber no pseudo-elemento */
+    background-repeat: no-repeat; /* Evitando repetição da imagem do rover */
+    background-position: center; /* Centralizando a imagem do rover no pseudo-elemento */
+    opacity: 0; /* Definindo a opacidade inicial como 0 para que o rover fique escondido */
+    transition: opacity 0.2s ease-in-out; /* Adicionando uma transição suave para o efeito de opacidade */
+  }
+  
+  .card-avatar img:hover {
+    transform: scale(1.1); /* Aplicando um aumento de escala de 110% na imagem quando o mouse é passado sobre ela */
+  }
+  
+  .card-avatar img:hover::after {
+    opacity: 1; /* Definindo a opacidade do pseudo-elemento como 1 para exibir o rover quando o mouse é passado sobre a imagem */
+  }
+  
   .card-details {
-    padding: 10px;
+    padding: 25px; /* Exemplo: aumentando o preenchimento para 16px */
+    margin-top: 8px; /* Exemplo: adicionando uma margem superior de 8px */
   }
   
   .card-name {
-    font-size: 16px;
+    font-size: 18px; /* Exemplo: aumentando o tamanho da fonte para 18px */
     font-weight: bold;
+    font-family: 'Arial', sans-serif; /* Exemplo: alterando a fonte para Arial ou outra de sua preferência */
   }
   
   .card-species {
     font-size: 14px;
-    color: #666;
+    color: #333; /* Exemplo: alterando a cor para um tom mais escuro de cinza (#333) para aumentar o contraste */
   }
-    
+  
